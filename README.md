@@ -1,5 +1,7 @@
 # vagrant-k8s-nodes-on-docker
 
+[![vagrant validate](https://github.com/sh-cho/vagrant-k8s-nodes-on-docker/actions/workflows/validate.yml/badge.svg)](https://github.com/sh-cho/vagrant-k8s-nodes-on-docker/actions/workflows/validate.yml)
+
 (WIP)
 
 ## why?
