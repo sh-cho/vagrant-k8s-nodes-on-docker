@@ -1,5 +1,7 @@
 # vagrant-k8s-nodes-on-docker
 
+(WIP)
+
 ## why?
 
 VirtualBox doesn't support ARM64 architecture, and I only have a m1 Macbook.
@@ -10,6 +12,10 @@ VirtualBox doesn't support ARM64 architecture, and I only have a m1 Macbook.
 - nodes spec (see [Vagrantfile](Vagrantfile))
   - 1 master node (2 core + 3G memory)
   - 3 worker nodes (1 core + 2G memory)
+- versions (not up-to-date)
+  - kubernetes: 1.20.2
+  - docker: 19.03.14-3.el8
+  - containerd.io: 1.3.9-3.1.el8
 
 ## how to use
 
