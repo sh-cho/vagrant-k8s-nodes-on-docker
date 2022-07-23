@@ -26,7 +26,7 @@ Vagrant.configure("2") do |config|
       docker.privileged = true
       docker.volumes = ["/sys/fs/cgroup:/sys/fs/cgroup:rw"]
       docker.create_args = ["--cgroupns=host", "--platform=linux/arm64"]
-      docker.create_args = ["--cpuset-cpu=2", "--memory=3g"]
+      docker.create_args = ["--cpuset-cpus=2", "--memory=3g"]
     end
     cfg.vm.host_name = "m-k8s"
     cfg.vm.network "private_network", ip: "192.168.1.10"
@@ -51,7 +51,7 @@ Vagrant.configure("2") do |config|
         docker.privileged = true
         docker.volumes = ["/sys/fs/cgroup:/sys/fs/cgroup:rw"]
         docker.create_args = ["--cgroupns=host", "--platform=linux/arm64"]
-        docker.create_args = ["--cpuset-cpu=1", "--memory=2g"]
+        docker.create_args = ["--cpuset-cpus=1", "--memory=2g"]
       end
       cfg.vm.host_name = "w#{i}-k8s"
       cfg.vm.network "private_network", ip: "192.168.1.10#{i}"
