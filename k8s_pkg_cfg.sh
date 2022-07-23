@@ -1,17 +1,24 @@
 #!/usr/bin/env bash
 
 # install util packages
-sudo yum install epel-release -y
-sudo yum install vim-enhanced -y
-sudo yum install git -y
+sudo yum install epel-release vim-enhanced git iproute-tc -y
 
 # install docker
 sudo yum install docker-ce-$2 docker-ce-cli-$2 containerd.io-$3 -y
-cat <<EOF > /etc/docker/daemon.json
-{
-  "storage-driver": "overlay2"
-}
-EOF
+# mkdir /etc/docker
+# cat <<EOF > /etc/docker/daemon.json
+# {
+#   "exec-opts": ["native.cgroupdriver=systemd"],
+#   "log-driver": "json-file",
+#   "log-opts": {
+#     "max-size": "100m"
+#   },
+#   "storage-driver": "overlay2",
+#   "storage-opts": [
+#     "overlay2.override_kernel_check=true"
+#   ]
+# }
+# EOF
 
 # install kubernetes
 # both kubelet and kubectl will install by dependency
