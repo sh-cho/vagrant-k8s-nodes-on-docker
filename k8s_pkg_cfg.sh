@@ -7,6 +7,11 @@ sudo yum install git -y
 
 # install docker
 sudo yum install docker-ce-$2 docker-ce-cli-$2 containerd.io-$3 -y
+cat <<EOF > /etc/docker/daemon.json
+{
+  "storage-driver": "overlay2"
+}
+EOF
 
 # install kubernetes
 # both kubelet and kubectl will install by dependency
