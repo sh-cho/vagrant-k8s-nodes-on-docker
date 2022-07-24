@@ -8,6 +8,12 @@
 
 VirtualBox doesn't support ARM64 architecture, and I only have a m1 Macbook.
 
+## so.. it's working?
+
+No... 😞
+
+I'm trying make it work...
+
 ## info
 
 - image: [`seonghyeon/vagrant-docker-provider:rockylinux8-systemd`](https://github.com/sh-cho/vagrant-docker-provider)
