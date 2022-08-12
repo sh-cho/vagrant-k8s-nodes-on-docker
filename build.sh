@@ -67,13 +67,16 @@ EOF
 sudo yum install epel-release vim-enhanced git iproute-tc -y
 
 # install container runtime
-# sudo yum install containerd.io-${containerd_version} -y
-# sudo yum install containerd.io -y
-sudo yum install docker-ce docker-ce-cli containerd.io -y
-sed -i '/"cri"/ s/^/#/' /etc/containerd/config.toml
+sudo yum install containerd.io cri-tools -y
+
+containerd config default > /etc/containerd/config.toml
+sed -i '/plugins."io.containerd.grpc.v1.cri".containerd.default_runtime.options/a\          SystemdCgroup = true' /etc/containerd/config.toml
 
 sudo systemctl daemon-reload
 sudo systemctl enable --now containerd
+
+sudo crictl config --set runtime-endpoint=unix:///run/containerd/containerd.sock --set image-endpoint=unix:///run/containerd/containerd.sock
+crictl ps
 
 # install kubernetes
 # both kubelet and kubectl will install by dependency
@@ -81,5 +84,4 @@ sudo systemctl enable --now containerd
 sudo yum install kubelet-${kube_version} kubectl-${kube_version} kubeadm-${kube_version} -y --disableexcludes=kubernetes
 
 # Ready to install for k8s
-sudo systemctl enable --now docker
 sudo systemctl enable --now kubelet
